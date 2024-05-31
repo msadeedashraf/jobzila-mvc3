@@ -1,4 +1,5 @@
-﻿using jobzila_mvc2.Models;
+﻿
+using jobzila_mvc2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,11 +14,14 @@ namespace jobzila_mvc2.Controllers
             _logger = logger;
         }
 
+        
         public IActionResult Index()
         {
             return View();
         }
 
+
+        
         public IActionResult Privacy()
         {
             return View();
