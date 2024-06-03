@@ -68,6 +68,13 @@ namespace jobzila_mvc2.Controllers
 
             return View(post);
         }
+
+        [Route("create")]
+        public IActionResult Create()
+        { 
+
+        return View();
+        }
     }
 }
 
