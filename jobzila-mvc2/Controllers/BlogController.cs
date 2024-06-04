@@ -69,11 +69,33 @@ namespace jobzila_mvc2.Controllers
             return View(post);
         }
 
-        [Route("create")]
+        [HttpGet,  Route("create")]
         public IActionResult Create()
         { 
 
         return View();
+        }
+
+      
+
+        [HttpPost,  Route("create")]
+
+
+        //New Model 
+        //public IActionResult Create( CreatePostRequest post)
+        //Bind attribute 
+        //public IActionResult Create([Bind("Title", "Body")] Post post)
+        public IActionResult Create(Post post)
+        {
+            if (!ModelState.IsValid)
+                 
+                return View();
+            
+
+            post.Author = "Sadeed";
+            post.Posted = DateTime.Now;
+
+            return View();
         }
     }
 }
