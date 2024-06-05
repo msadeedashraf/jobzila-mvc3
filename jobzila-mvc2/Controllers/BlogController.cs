@@ -10,6 +10,16 @@ namespace jobzila_mvc2.Controllers
     public class BlogController : Controller
     {
 
+        private readonly BlogDataContext _db;
+
+        public BlogController(BlogDataContext db)
+        {
+            _db = db;
+        }
+
+
+
+
         [Route("")]
         public IActionResult Index()
         {
@@ -88,12 +98,22 @@ namespace jobzila_mvc2.Controllers
         public IActionResult Create(Post post)
         {
             if (!ModelState.IsValid)
-                 
+            { 
+                var errors = ModelState.Values.SelectMany(v=>v.Errors).Select(e=>e.ErrorMessage).ToList();
+                
+                
+            
                 return View();
+            }
+                 
+
             
 
-            post.Author = "Sadeed";
+            post.Author = "Bajinder";
             post.Posted = DateTime.Now;
+
+            _db.Posts.Add(post);
+            _db.SaveChanges();
 
             return View();
         }

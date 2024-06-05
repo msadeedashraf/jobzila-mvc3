@@ -1,7 +1,19 @@
+using jobzila_mvc2.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<BlogDataContext>(options =>
+{
+
+    var connectionString = builder.Configuration.GetConnectionString("BlogDataContext");
+    options.UseSqlServer(connectionString);
+
+
+});
 
 var app = builder.Build();
 

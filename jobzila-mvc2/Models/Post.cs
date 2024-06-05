@@ -1,9 +1,33 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace jobzila_mvc2.Models
 {
     public class Post
     {
+
+        public long Id { get; set; }
+
+
+        public string _key;
+        public string key {
+
+            get { 
+                if(_key==null) {
+
+                    _key = Regex.Replace(Title.ToLower(), "[^a-z0-9]", "-");
+
+                    return _key; 
+                
+                }
+            
+            return _key;
+            }
+            set { _key = value; } 
+        
+        
+        }
+
         //Dataanotations
         [Display(Name = "Post Title")]
         [Required]
@@ -15,7 +39,39 @@ namespace jobzila_mvc2.Models
         [Display(Name ="My Blog Content")]
         public string Body { get; set; }
 
-        public string Author { get; set; }
-        public  DateTime Posted{ get; set; }
+
+        public string _author;
+
+        public string Author {
+
+
+            get {
+
+                if (_author == null)
+                {
+                    _author = "Sadeed";
+                }
+
+                return _author;
+
+            }
+                
+                
+            
+            
+            set { _author = value; } 
+        
+        
+        }
+
+        public DateTime _posted = DateTime.Now;
+
+        public  DateTime Posted{
+
+            get { return _posted; }
+
+            set { _posted = value; } 
+        
+        }
     }
 }
