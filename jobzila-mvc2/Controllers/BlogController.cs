@@ -23,6 +23,7 @@ namespace jobzila_mvc2.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            /*
             var posts = new[] {
 
                 new Post{
@@ -44,16 +45,21 @@ namespace jobzila_mvc2.Controllers
 
             };
 
-           
+           */
+
+            //var posts = _db.Posts.ToArray();
+            var posts = _db.Posts.OrderByDescending(x=>x.Posted).Take(5).ToArray();
+
 
             return View(posts);
         }
 
 
         [Route("{year:min(2015)}/{month:range(1,12)}/{key}")]
-        public IActionResult Post()
+        public IActionResult Post(int year, int month, string key)
         {
 
+            /*
             var post = new Post
             {
                 Title = "My First Blog",
@@ -62,8 +68,9 @@ namespace jobzila_mvc2.Controllers
                 Posted = DateTime.Now
             };
 
+            */
 
-
+            var post = _db.Posts.FirstOrDefault(x => x.key == key);
 
 
 
@@ -99,7 +106,7 @@ namespace jobzila_mvc2.Controllers
         {
             if (!ModelState.IsValid)
             { 
-                var errors = ModelState.Values.SelectMany(v=>v.Errors).Select(e=>e.ErrorMessage).ToList();
+                //var errors = ModelState.Values.SelectMany(v=>v.Errors).Select(e=>e.ErrorMessage).ToList();
                 
                 
             
@@ -115,7 +122,14 @@ namespace jobzila_mvc2.Controllers
             _db.Posts.Add(post);
             _db.SaveChanges();
 
-            return View();
+            //return View();
+            return RedirectToAction("Post","Blog",new {
+
+                year = post.Posted.Year,
+                month = post.Posted.Month,
+                key = post.key
+
+            } );
         }
     }
 }
