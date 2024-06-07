@@ -17,10 +17,12 @@
                 <li><a     asp-controller="Home" asp-action="Index"  >Home</a></li>
 
                 <li><a href="/job-zila/jobsearch.html">Job Search</a></li>
-                <li><a href="/job-zila/joblisting.html">Job Listing</a></li>
-                <li><a href="/job-zila/joblisting-json.html">Job Listing Json</a></li>
+                
+                <li><a  asp-controller="Job" asp-action="Index"  >Job Listing</a></li>
+
+                
                 <li>
-                    <a href="/job-zila/terms-of-service.html">Terms of Service</a>
+                    <a asp-controller="Home" asp-action="Termandservice">Terms of Service</a>
                 </li>
                 <li><a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
                 
@@ -28,9 +30,7 @@
 
 
 
-                <li>
-                    <a href="@Url.Action()">Terms of Service</a>
-                </li>
+               
 
                 <li>  <a href="@Url.Action("Index", "Blog")">My Blog</a>  </li>
 
@@ -42,7 +42,7 @@
                 
                 @* <li><a asp-controller="Blog" asp-action="Post">Blog Post</a></li> *@
                 
-                <li><a href="/job-zila/contact-us.html">Contact Us</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
             </ul>
         </nav>
     </header>

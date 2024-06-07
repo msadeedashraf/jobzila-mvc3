@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model jobzila_mvc2.Models.Jobs;
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+<main>
+    <section id="contact-form-section">
+        <h2>Add a Job</h2>
+        <div class="form-div">
+            <form id="contact-form" asp-action="Createjob" asp-controller="Job">
+
+
+                <div>
+
+                    <label class="form-label" asp-for="Title"></label>
+                    <input class="form-control" asp-for="Title" placeholder="Job Title" />
+
+                    <span asp-validation-for="Title" class="text-danger"></span>
+
+                </div>
+
+                <div>
+
+                    <label class="form-label" asp-for="Company"></label>
+                    <input class="form-control" asp-for="Company" placeholder="Company" />
+                    <span asp-validation-for="Company" class="text-danger"></span>
+                </div>
+
+                <div>
+
+                    <label class="form-label" asp-for="City"></label>
+                    <input class="form-control" asp-for="City" placeholder="City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+
+                </div>
+
+                <div>
+
+                    <label class="form-label" asp-for="Description">Description</label>
+                    <input class="form-control" asp-for="Description" placeholder="Job Description" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+
+                </div>
+
+
+                <button type="submit">Add Jobs</button>
+
+
+            </form>
+        </div>
+    </section>
+</main>
+
+
+
