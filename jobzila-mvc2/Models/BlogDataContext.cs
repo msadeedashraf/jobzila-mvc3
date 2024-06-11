@@ -6,6 +6,7 @@ namespace jobzila_mvc2.Models
 
     {
         public DbSet<Post> Posts { get; set; }
+       
 
 
         public BlogDataContext(DbContextOptions<BlogDataContext> options)

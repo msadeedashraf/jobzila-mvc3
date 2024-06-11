@@ -11,9 +11,23 @@ builder.Services.AddDbContext<BlogDataContext>(options =>
 
     var connectionString = builder.Configuration.GetConnectionString("BlogDataContext");
     options.UseSqlServer(connectionString);
+    
+    
 
 
 });
+
+builder.Services.AddDbContext<JobsDataContext>(options =>
+{
+
+    var connectionString = builder.Configuration.GetConnectionString("BlogDataContext");
+    options.UseSqlServer(connectionString);
+
+
+
+
+});
+
 
 var app = builder.Build();
 
